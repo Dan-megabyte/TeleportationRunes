@@ -1,4 +1,8 @@
-# Like my work?
+# Disclaimer
+
+I don't really know java, but I'm trying to learn by porting this to Folia
+
+## Like my work?
 
 Feel free to [buy the original dev a coffee!](https://www.paypal.com/donate?hosted_button_id=GTDZ79S4FR7Y6)
 
