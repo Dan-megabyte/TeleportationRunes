@@ -1,14 +1,14 @@
 # Like my work?
 
-Feel free to [buy me a coffee!](https://www.paypal.com/donate?hosted_button_id=GTDZ79S4FR7Y6)
+Feel free to [buy the original dev a coffee!](https://www.paypal.com/donate?hosted_button_id=GTDZ79S4FR7Y6)
 
 # TeleportationRunes
-A command-less teleportation plugin for Minecraft (compatible with Bukkit, Spigot, and Paper).
+A command-less teleportation plugin for Minecraft (compatible with Folia).
 
 ## Downloads
 
-* [Latest stable build](https://github.com/BLuFeNiX/TeleportationRunes/releases/latest)
-* Pre-release builds can be found at the top of [this page](https://github.com/BLuFeNiX/TeleportationRunes/releases). These will have newer features and fixes, but may not be stable or fully tested.
+* [Latest stable build](https://github.com/Dan-megabyte/TeleportationRunes/releases/latest)
+* Pre-release builds can be found at the top of [this page](https://github.com/Dan-megabyte/TeleportationRunes/releases). These will have newer features and fixes, but may not be stable or fully tested.
 
 ## Building
 ```
@@ -16,7 +16,7 @@ mvn clean package
 ```
 
 ## Installation
-Place `TeleportationRunes.jar` in your plugins folder, and restart your server.
+Place `TeleportationRunesFolia.jar` in your plugins folder, and restart your server.
 
 ## In-Game Usage
 
@@ -75,7 +75,7 @@ Enabling this will allow for the creation of abnormally shapped structures, with
 
 #### Item Recipe Customization
 
-The **Book of Ender** and **Scroll of Warp** recipes may be customized, as well as some mechanics of their use (for example, if the book is consumed when used). See [config.yml](https://github.com/BLuFeNiX/TeleportationRunes/blob/master/src/main/resources/config.yml) for examples.
+The **Book of Ender** and **Scroll of Warp** recipes may be customized, as well as some mechanics of their use (for example, if the book is consumed when used). See [config.yml](https://github.com/Dan-megabyte/TeleportationRunes/blob/master/src/main/resources/config.yml) for examples.
 
 #### Blueprint (shape)
 The configuration below describes a 1-block high, 3x3 square for both the teleporter and waypoint. This matches the default configuration.
