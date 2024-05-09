@@ -32,7 +32,7 @@ jobs:
     - name: Create Release
       uses: ncipollo/release-action@v1.8.6
       with:
-        name: "TeleportationRunes ${{ env.RELEASE_VERSION }}"
-        artifacts: "target/TeleportationRunes.jar"
+        name: "TeleportationRunesFolia ${{ env.RELEASE_VERSION }}"
+        artifacts: "target/TeleportationRunesFolia.jar"
         token: ${{ secrets.GITHUB_TOKEN }}
         prerelease: ${{ env.IS_PRE_RELEASE }}
