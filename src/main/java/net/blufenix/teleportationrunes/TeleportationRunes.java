@@ -197,13 +197,17 @@ public class TeleportationRunes extends JavaPlugin implements Listener {
 		final ItemStack scrollStack = player.getInventory().getItemInMainHand();
 		Signature sig = Signature.fromLore(scrollStack.getItemMeta().getLore());
 		Waypoint waypoint = Waypoint.fromLocation(blockLocation);
+		Teleporter teleporter = TeleUtils.getTeleporterFromLocation(blockLocation);
 
-		if (waypoint != null) {
+		if (waypoint != null || teleporter != null) { // want attunement
 			if (!Config.allowReattune && sig != null) {
 				player.sendMessage(ChatColor.RED+"Cannot re-attune scroll!");
 				return;
 			}
 			String msg;
+			if (waypoint == null) {
+				waypoint = TeleUtils.getWaypointForTeleporter(teleporter);
+			}
 			if (waypoint.status == Waypoint.EXISTS_VERIFIED) {
 				Log.d("waypoint valid! trying to attune scroll");
 				ItemMeta meta = scrollStack.getItemMeta();
