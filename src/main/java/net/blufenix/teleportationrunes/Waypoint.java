@@ -1,9 +1,6 @@
 package net.blufenix.teleportationrunes;
 
-import net.blufenix.common.Log;
 import org.bukkit.Location;
-
-import java.util.Arrays;
 
 /**
  * Created by blufenix on 7/29/15.
