@@ -25,7 +25,7 @@ public class TeleportTask extends BukkitRunnable {
 
     private int elapsedTicks = 0;
 
-    private final Player player;
+    private Player player;
     private final boolean canLeaveArea;
     private final boolean requireSneak;
     private Location sourceLoc;
@@ -52,6 +52,11 @@ public class TeleportTask extends BukkitRunnable {
         this.requireSneak = requireSneak;
     }
 
+    public void reset(Player player, Location potentialTeleporterLoc) {
+        this.player = player;
+        this.potentialTeleporterLoc = potentialTeleporterLoc;
+    }
+
     private void lateInit() {
         if (potentialTeleporterLoc != null) {
             Teleporter teleporter = TeleUtils.getTeleporterNearLocation(potentialTeleporterLoc);
@@ -66,14 +71,15 @@ public class TeleportTask extends BukkitRunnable {
     }
 
     public void execute() {
-        if (playersCurrentlyTeleporting.contains(player)) {
-            return; //todo this will mean our callback isn't called
-            // but we need it for now in order to prevent repeated teleport attempts
-            // since calling onSuccessOrFail will remove us from playersCurrentlyTeleporting
-            // and right now the callbacks don't need to work in that case.
+        synchronized (playersCurrentlyTeleporting) {
+            if (playersCurrentlyTeleporting.contains(player)) {
+                return; // todo this will mean our callback isn't called
+                // but we need it for now in order to prevent repeated teleport attempts
+                // since calling onSuccessOrFail will remove us from playersCurrentlyTeleporting
+                // and right now the callbacks don't need to work in that case.
+            }
+            playersCurrentlyTeleporting.add(player);
         }
-
-        playersCurrentlyTeleporting.add(player);
         lateInit();
 
         if (startTeleportationTask()) {
@@ -164,7 +170,9 @@ public class TeleportTask extends BukkitRunnable {
         Bukkit.getScheduler().runTaskLater(TeleportationRunes.getInstance(), new Runnable() {
             @Override
             public void run() {
-                playersCurrentlyTeleporting.remove(player);
+                synchronized (playersCurrentlyTeleporting) {
+                    playersCurrentlyTeleporting.remove(player);
+                }
             }
         }, 20);
     }
